@@ -1,0 +1,106 @@
+\documentclass[12pt,a4paper]{letter}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[slovene]{babel}
+\usepackage[top=1in,left=0.7in,right=0.7in,bottom=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{charter}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Blindtext
+\usepackage{blindtext}
+
+\usepackage[pdftex,unicode=true,colorlinks=true,allcolors=black,
+pdfproducer={LaTeX},pdfcreator={pdflatex}]{hyperref}
+
+% PDF Metadata
+\makeatletter
+\newcommand{\@keywords}{}
+\newcommand{\@producer}{}
+\newcommand{\@subject}{}
+\newcommand{\keywords}[1]{\renewcommand{\@keywords}{#1}}
+\newcommand{\producer}[1]{\renewcommand{\@producer}{#1}}
+\newcommand{\subject}[1]{\renewcommand{\@subject}{#1}}
+\AtBeginDocument{\hypersetup{pdfauthor={\@author},pdfkeywords={\@keywords},
+pdfproducer={\@producer},pdfsubject={\@subject},pdftitle={\@title}}}
+\makeatother
+
+% Enable footrule color
+\makeatletter
+\renewcommand{\footrule}{{\vskip-\footruleskip\vskip-\footrulewidth  \color{\footrulecolor}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
+\makeatother
+
+% Design header and footer
+\pagestyle{fancy}
+\fancyhf{}
+
+\rhead{\includegraphics[height=62pt]{fis-header.pdf}}
+\lfoot{\scriptsize\textbf{Fakulteta za informacijske študije}\\Ul. talcev 3, 8000 Novo mesto, Slovenija,\ \textcolor{fiscolor}{T:}~07\,37\,37\,884,\ \textcolor{fiscolor}{F:}~059\,08\,79\,03,\ \textcolor{fiscolor}{E:}~info@fis.unm.si,\ www.fis.unm.si}
+
+\newlength{\savedheadheight}
+\setlength{\savedheadheight}{\headheight}
+\setlength{\headheight}{67pt}
+\addtolength{\textheight}{-67pt}
+\addtolength{\textheight}{\savedheadheight}
+\definecolor{fiscolor}{cmyk}{0.32,0,0.83,0.32}
+\newcommand{\footrulecolor}{fiscolor}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+%\setlength{\headsep}{30pt}
+
+% Maketitle redefinition
+\makeatletter
+\renewcommand{\maketitle}{\begin{center}
+\textbf{\huge \@subject}\\[1cm]
+\textit{\Large \@title}\\[3mm]
+\textit{\large \@date}\\
+\end{center}}
+\newcommand{\myname}{\@author}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Document information
+
+\title{rezultati 2.~izpita}
+\author{asist.~Janez Kranjski}
+\date{16.\,6.~2014}
+\keywords{rezultati}
+\subject{Matematične metode 1}
+%\producer{LaTeX}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% First page
+
+\maketitle
+
+\vspace{2.5cm}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{c|c}
+\textsc{vpisna številka} & \textsc{dosežene točke} \\\hline
+12345678 & 10 \\
+12345678 & 20 \\
+12345678 & 90 \\
+12345678 & 94 \\\hline
+\textsc{največ} & 100
+\end{tabular}
+\end{center}
+
+\vfill
+\myname
+\vspace{2cm}
+
+\newpage
+
+% Another page
+
+\textbf{Blindtext}
+
+\Blindtext
+
+\end{document}
