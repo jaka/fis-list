@@ -32,23 +32,24 @@ pdfproducer={\@producer},pdfsubject={\@subject},pdftitle={\@title}}}
 \renewcommand{\footrule}{{\vskip-\footruleskip\vskip-\footrulewidth  \color{\footrulecolor}\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
 \makeatother
 
+\newcommand{\header}{1}
 % Design header and footer
-\pagestyle{fancy}
-\fancyhf{}
-
-\rhead{\includegraphics[height=62pt]{fis-header.pdf}}
-\lfoot{\scriptsize\textbf{Fakulteta za informacijske študije}\\Ul. talcev 3, 8000 Novo mesto, Slovenija,\ \textcolor{fiscolor}{T:}~07\,37\,37\,884,\ \textcolor{fiscolor}{F:}~059\,08\,79\,03,\ \textcolor{fiscolor}{E:}~info@fis.unm.si,\ www.fis.unm.si}
-
 \newlength{\savedheadheight}
 \setlength{\savedheadheight}{\headheight}
+\addtolength{\textheight}{\savedheadheight}
+\if\header1
+\pagestyle{fancy}\fancyhf{}
+\rhead{\includegraphics[height=62pt]{fis-header.pdf}}
+\lfoot{\scriptsize\textbf{Fakulteta za informacijske študije}\\Ul. talcev 3, 8000 Novo mesto, Slovenija,\ \textcolor{fiscolor}{T:}~07\,37\,37\,884,\ \textcolor{fiscolor}{F:}~059\,08\,79\,03,\ \textcolor{fiscolor}{E:}~info@fis.unm.si,\ www.fis.unm.si}
 \setlength{\headheight}{67pt}
 \addtolength{\textheight}{-67pt}
-\addtolength{\textheight}{\savedheadheight}
 \definecolor{fiscolor}{cmyk}{0.33,0,0.83,0.32}
 \newcommand{\footrulecolor}{fiscolor}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{1pt}
-%\setlength{\headsep}{30pt}
+\else
+\setlength{\headheight}{0mm}
+\fi
 
 % Maketitle redefinition
 \makeatletter
@@ -56,6 +57,10 @@ pdfproducer={\@producer},pdfsubject={\@subject},pdftitle={\@title}}}
 \textbf{\huge \@subject}\\[1cm]
 \textit{\Large \@title}\\[3mm]
 \textit{\large \@date}\\
+\end{center}}
+\newcommand{\makesmalltitle}{\begin{center}
+\textbf{\huge \@subject}\\[4mm]
+\textit{\Large \@title, \large \@date}\\[3mm]
 \end{center}}
 \newcommand{\myname}{\@author}
 \makeatother
@@ -65,7 +70,7 @@ pdfproducer={\@producer},pdfsubject={\@subject},pdftitle={\@title}}}
 
 \title{rezultati 2.~izpita}
 \author{asist.~Janez Kranjski}
-\date{16.\,6.~2014}
+\date{16.~6.~2014}
 \keywords{rezultati}
 \subject{Matematične metode 1}
 %\producer{LaTeX}
@@ -76,6 +81,7 @@ pdfproducer={\@producer},pdfsubject={\@subject},pdftitle={\@title}}}
 % First page
 
 \maketitle
+%\makesmalltitle
 
 \vspace{2.5cm}
 
